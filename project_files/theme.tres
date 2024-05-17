@@ -1,0 +1,44 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c18an0636huu3"]
+
+[ext_resource type="FontFile" uid="uid://c0gdb2t0u4blg" path="res://Art/fonts/ThaleahFat.ttf" id="1_ftfgy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uut5i"]
+bg_color = Color(8.42288e-07, 0.346331, 0.347234, 1)
+border_width_bottom = 5
+border_color = Color(0.0745098, 0.0745098, 0.0745098, 0.847059)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67nr5"]
+bg_color = Color(1.2514e-06, 0.628657, 0.630195, 1)
+border_width_bottom = 5
+border_color = Color(0.137255, 0.137255, 0.137255, 0.584314)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3pad"]
+bg_color = Color(2.40654e-08, 0.313136, 0.313964, 1)
+border_width_bottom = 5
+border_color = Color(0.0156863, 0.0156863, 0.0156863, 0.917647)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[resource]
+Button/constants/outline_size = 1
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_ftfgy")
+Button/styles/hover = SubResource("StyleBoxFlat_uut5i")
+Button/styles/normal = SubResource("StyleBoxFlat_67nr5")
+Button/styles/pressed = SubResource("StyleBoxFlat_k3pad")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.67451)
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 2
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_ftfgy")

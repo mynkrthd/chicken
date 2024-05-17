@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cav8gkhohwn8w"]
+
+[ext_resource type="Theme" uid="uid://c18an0636huu3" path="res://theme.tres" id="1_hcopf"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hcopf")
+
+[node name="resumeBtn" type="Button" parent="."]
+offset_left = 503.0
+offset_top = 125.0
+offset_right = 658.0
+offset_bottom = 179.0
+size_flags_vertical = 4
+text = "RESUME"
+
+[node name="quitBtn" type="Button" parent="."]
+offset_left = 530.0
+offset_top = 214.0
+offset_right = 632.0
+offset_bottom = 257.0
+text = "Quit"
