@@ -16,17 +16,21 @@ layout_direction = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 42.0
+offset_bottom = 74.0
 grow_horizontal = 2
+theme = ExtResource("1_htc5r")
+theme_override_constants/separation = 15
 alignment = 1
 
 [node name="ProgressBar2" type="ProgressBar" parent="HBoxContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(100, 50)

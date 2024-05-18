@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqflje2qxnwrj"]
+[gd_scene load_steps=12 format=3 uid="uid://dqflje2qxnwrj"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_smf8d"]
 [ext_resource type="PackedScene" uid="uid://dlmr5vl3ghvlj" path="res://Scenes/UI/hud.tscn" id="2_x50cj"]
@@ -7,9 +7,29 @@
 [ext_resource type="PackedScene" uid="uid://bu8i820k0wfg0" path="res://Scenes/UI/game_over.tscn" id="4_vghgb"]
 [ext_resource type="PackedScene" uid="uid://cav8gkhohwn8w" path="res://Scenes/UI/pause_menu.tscn" id="5_o1636"]
 [ext_resource type="PackedScene" uid="uid://beysilb8k5oaq" path="res://Scenes/UI/level_village.tscn" id="7_shfhw"]
+[ext_resource type="Texture2D" uid="uid://b3d8vkr8okjho" path="res://sprites/icon.svg" id="8_cnswr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax5xm"]
+atlas = ExtResource("8_cnswr")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qm2kt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax5xm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_03xhs"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_smf8d")
+
+[node name="levelborder" type="Node" parent="."]
 
 [node name="LevelVillage" parent="." instance=ExtResource("7_shfhw")]
 position = Vector2(2.08165e-12, 2.08165e-12)
@@ -20,6 +40,7 @@ position = Vector2(411, 223)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="mainMenu" parent="CanvasLayer" instance=ExtResource("2_xh740")]
+visible = false
 
 [node name="hud" parent="CanvasLayer" instance=ExtResource("2_x50cj")]
 anchors_preset = 10
@@ -35,6 +56,17 @@ visible = false
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 341)
 offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Eggs" type="Node" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Eggs"]
+position = Vector2(540, 318)
+sprite_frames = SubResource("SpriteFrames_qm2kt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eggs"]
+position = Vector2(542, 320)
+scale = Vector2(5.83, 5.83)
+shape = SubResource("CircleShape2D_03xhs")
 
 [connection signal="QUITGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_quitgame"]
 [connection signal="STARTGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_startgame"]
