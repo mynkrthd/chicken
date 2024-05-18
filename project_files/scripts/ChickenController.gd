@@ -2,25 +2,30 @@ extends CharacterBody2D
 
 
 @export var SPEED = 500.0;
-@export var DASH_SPEED = 900;
+@export var DASH_SPEED = 1000;
 @export_range(0.0, 1.5) var SKEW_AMOUNT = 0.0;
 
 @onready var dash_timer = $CharacterAnchor/DashTimer
+@onready var can_dash_timer = $CharacterAnchor/CanDashTimer
 @onready var character_anchor = $CharacterAnchor
 @onready var chicken_sprite = $CharacterAnchor/Chicken
 @onready var gun_anchor = $CharacterAnchor/GunAnchor
 @onready var front_vector = $CharacterAnchor/frontVector
 
+var dashing = false;
+var can_dash = true;
+
 func get_input():
-	var movement_speed = SPEED;
 	#Movement input
 	#Calculating the unit vector of the direction into which to move and multipling it with speed
 	var input_direction = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");
 	#TODO: Implement Dash and Shooting
 	#Checking if dash key is pressed
-	#if Input.is_action_pressed("Dash"):
-		#movement_speed = DASH_SPEED;
-		#dash_timer.start();
+	if Input.is_action_pressed("Dash") && !dashing && can_dash:
+		dashing = true;
+		can_dash = false;
+		can_dash_timer.start();
+		dash_timer.start();
 	#Flipping character horizontally according to the movement key pressed
 	if Input.is_action_pressed("MoveLeft"):
 		if character_anchor.scale.x > 0:
@@ -56,8 +61,21 @@ func get_input():
 	gun_anchor.look_at(get_global_mouse_position());
 	print("Character Anchor Scale: ", character_anchor.scale);
 	print("Dot Product: ", mouse_pos_vector.dot(forward_vector), " ; Gun Ancor Scale: ", gun_anchor.scale);
-	velocity = input_direction * movement_speed;
+	
+	if dashing:
+		velocity = input_direction * DASH_SPEED;
+	else:
+		velocity = input_direction * SPEED;
+	
 
 func _physics_process(delta):
 	get_input();
 	move_and_slide();
+
+
+func _on_dash_timer_timeout():
+	dashing = false;
+
+
+func _on_can_dash_timer_timeout():
+	can_dash = true;

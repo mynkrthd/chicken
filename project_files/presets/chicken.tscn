@@ -16,7 +16,10 @@ SKEW_AMOUNT = 0.2
 [node name="CharacterAnchor" type="Node2D" parent="."]
 
 [node name="DashTimer" type="Timer" parent="CharacterAnchor"]
-wait_time = 0.2
+wait_time = 0.1
+one_shot = true
+
+[node name="CanDashTimer" type="Timer" parent="CharacterAnchor"]
 one_shot = true
 
 [node name="Chicken" type="Sprite2D" parent="CharacterAnchor"]
@@ -48,3 +51,6 @@ texture = ExtResource("4_5gug4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -53)
 shape = SubResource("CapsuleShape2D_btpga")
+
+[connection signal="timeout" from="CharacterAnchor/DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="CharacterAnchor/CanDashTimer" to="." method="_on_can_dash_timer_timeout"]
