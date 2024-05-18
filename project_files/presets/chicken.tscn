@@ -21,6 +21,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="CanDashTimer" type="Timer" parent="CharacterAnchor"]
+wait_time = 0.5
 one_shot = true
 
 [node name="Chicken" type="Sprite2D" parent="CharacterAnchor"]

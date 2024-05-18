@@ -8,12 +8,12 @@
 script = ExtResource("1_3b7jk")
 Bullet = ExtResource("2_s8uo0")
 
-[node name="Gun2" type="Sprite2D" parent="."]
+[node name="Gun" type="Sprite2D" parent="."]
 position = Vector2(53, 26)
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("3_ipdob")
 
-[node name="Muzzle" type="Marker2D" parent="Gun2"]
+[node name="Muzzle" type="Marker2D" parent="Gun"]
 position = Vector2(178.571, -33.3333)
 gizmo_extents = 50.0
 
