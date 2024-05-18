@@ -15,8 +15,14 @@ size_flags_vertical = 4
 theme = ExtResource("1_fi0kh")
 script = ExtResource("2_25fps")
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0941176, 0.0941176, 0.0941176, 0.839216)
 
 [node name="titleLbl" type="Label" parent="."]
 layout_mode = 2
@@ -48,7 +54,6 @@ offset_bottom = 257.0
 text = "Quit"
 
 [connection signal="STARTGAME" from="." to="." method="_on_startgame"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="startBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="toggled" from="startBtn" to="." method="_on_start_btn_toggled"]
 [connection signal="pressed" from="quitBtn" to="." method="_on_quit_btn_pressed"]
