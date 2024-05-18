@@ -37,5 +37,3 @@ func _on_main_menu_quitgame():
 func _on_pause_menu_resumegame():
 	gameResume()
 
-func _on_pause_menu_gotomainmenu():
-	showMainMenu()

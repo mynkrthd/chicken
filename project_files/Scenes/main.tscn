@@ -11,6 +11,8 @@
 [node name="main" type="Node2D"]
 script = ExtResource("1_smf8d")
 
+[node name="levelborder" type="Node" parent="."]
+
 [node name="LevelVillage" parent="." instance=ExtResource("7_shfhw")]
 position = Vector2(2.08165e-12, 2.08165e-12)
 
