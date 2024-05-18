@@ -11,8 +11,10 @@
 [node name="main" type="Node2D"]
 script = ExtResource("1_smf8d")
 
+[node name="LevelVillage" parent="." instance=ExtResource("7_shfhw")]
+
 [node name="PlayerChicken" parent="." instance=ExtResource("4_qg6wp")]
-position = Vector2(411, 223)
+position = Vector2(411, 300)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -32,9 +34,6 @@ visible = false
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 341)
 offset = Vector2(2.08165e-12, 2.08165e-12)
-
-[node name="LevelVillage" parent="." instance=ExtResource("7_shfhw")]
-position = Vector2(2.08165e-12, 2.08165e-12)
 
 [connection signal="QUITGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_quitgame"]
 [connection signal="STARTGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_startgame"]
