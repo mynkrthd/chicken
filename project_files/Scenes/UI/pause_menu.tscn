@@ -40,3 +40,4 @@ offset_bottom = 257.0
 text = "Main MENU"
 
 [connection signal="pressed" from="resumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="mainMenuBtn" to="." method="_on_main_menu_btn_pressed"]

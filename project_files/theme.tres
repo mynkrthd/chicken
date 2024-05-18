@@ -40,5 +40,5 @@ Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.67451)
 Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 2
-Label/font_sizes/font_size = 20
+Label/font_sizes/font_size = 50
 Label/fonts/font = ExtResource("1_ftfgy")
