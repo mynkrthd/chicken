@@ -1,8 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqflje2qxnwrj"]
+[gd_scene load_steps=7 format=3 uid="uid://dqflje2qxnwrj"]
 
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_smf8d"]
+[ext_resource type="PackedScene" uid="uid://dlmr5vl3ghvlj" path="res://Scenes/UI/hud.tscn" id="2_x50cj"]
+[ext_resource type="PackedScene" uid="uid://dbq4e7vqbsx5g" path="res://Scenes/UI/main_Menu.tscn" id="2_xh740"]
 [ext_resource type="PackedScene" uid="uid://dncvt2m2tm6hu" path="res://presets/chicken.tscn" id="4_qg6wp"]
+[ext_resource type="PackedScene" uid="uid://bu8i820k0wfg0" path="res://Scenes/UI/game_over.tscn" id="4_vghgb"]
+[ext_resource type="PackedScene" uid="uid://cav8gkhohwn8w" path="res://Scenes/UI/pause_menu.tscn" id="5_o1636"]
 
-[node name="Playground" type="Node2D"]
+[node name="main" type="Node2D"]
+script = ExtResource("1_smf8d")
 
 [node name="PlayerChicken" parent="." instance=ExtResource("4_qg6wp")]
 position = Vector2(411, 223)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="mainMenu" parent="CanvasLayer" instance=ExtResource("2_xh740")]
+
+[node name="hud" parent="CanvasLayer" instance=ExtResource("2_x50cj")]
+anchors_preset = 10
+anchor_bottom = 0.0
+grow_vertical = 1
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("4_vghgb")]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_o1636")]
+
+[connection signal="QUITGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_quitgame"]
+[connection signal="STARTGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_startgame"]
