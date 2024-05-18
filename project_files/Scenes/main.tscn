@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://ijdtuw301di4"]
+
+[ext_resource type="PackedScene" uid="uid://dbq4e7vqbsx5g" path="res://Scenes/UI/main_Menu.tscn" id="2_sl6ov"]
+[ext_resource type="PackedScene" uid="uid://cav8gkhohwn8w" path="res://Scenes/UI/pause_menu.tscn" id="3_55y5r"]
+[ext_resource type="PackedScene" uid="uid://dncvt2m2tm6hu" path="res://presets/chicken.tscn" id="4_qg6wp"]
+
+[sub_resource type="GDScript" id="GDScript_00i6r"]
+script/source = "extends Node2D
+
+@onready var main_menu = $mainMenu
+@onready var pause_menu = $PauseMenu
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	get_tree().paused = false
+	pause_menu.hide()
+	main_menu.show()
+
+func resumeGame():
+	pause_menu.hide()
+	get_tree().paused = false
+
+func pauseGame():
+	pause_menu.show()
+	get_tree().paused = true
+
+func _input(event):
+	pauseGame()
+
+func _on_main_menu_startgame():
+	main_menu.hide()
+
+func _on_main_menu_quitgame():
+	get_tree().quit()
+
+
+func _on_pause_menu_resumegame():
+	resumeGame()
+"
+
+[sub_resource type="GDScript" id="GDScript_2upn6"]
+script/source = "extends Control
+
+signal PUASEGAME
+signal RESUMEGAME
+signal GOTOMAINMENU
+
+
+"
+
+[node name="root" type="Node2D"]
+script = SubResource("GDScript_00i6r")
+
+[node name="mainMenu" parent="." instance=ExtResource("2_sl6ov")]
+visible = false
+offset_left = 10.0
+offset_top = 37.0
+offset_right = 10.0
+offset_bottom = 37.0
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_55y5r")]
+offset_top = 219.0
+offset_bottom = 219.0
+script = SubResource("GDScript_2upn6")
+
+[node name="PlayerChicken" parent="." instance=ExtResource("4_qg6wp")]
+position = Vector2(374, 211)
+
+[connection signal="QUITGAME" from="mainMenu" to="." method="_on_main_menu_quitgame"]
+[connection signal="STARTGAME" from="mainMenu" to="." method="_on_main_menu_startgame"]
+[connection signal="resized" from="mainMenu" to="." method="_on_main_menu_resized"]
+[connection signal="RESUMEGAME" from="PauseMenu" to="." method="_on_pause_menu_resumegame"]
