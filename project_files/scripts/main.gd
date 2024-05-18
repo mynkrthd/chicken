@@ -12,25 +12,30 @@ func gamePuase():
 	
 func gameResume():
 	pause_menu.hide()
-	
-func _ready():
+func showMainMenu():
 	main_menu.show()
 	pause_menu.hide()
 	game_over.hide()
 	hud.hide()
 	player_chicken.hide()
+		
+func _ready():
+	showMainMenu()
 	
 func _input(event):
 	if(event.is_action_pressed("pause_game")):
 		gamePuase()
+		
 func _on_main_menu_startgame():
 	player_chicken.show()
 	hud.show()
 	main_menu.hide()
-
 
 func _on_main_menu_quitgame():
 	get_tree().quit()
 
 func _on_pause_menu_resumegame():
 	gameResume()
+
+func _on_pause_menu_gotomainmenu():
+	showMainMenu()

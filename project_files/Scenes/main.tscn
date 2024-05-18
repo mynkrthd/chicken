@@ -24,8 +24,10 @@ anchor_bottom = 0.0
 grow_vertical = 1
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("4_vghgb")]
+visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_o1636")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 341)
@@ -36,4 +38,5 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 
 [connection signal="QUITGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_quitgame"]
 [connection signal="STARTGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_startgame"]
+[connection signal="GOTOMAINMENU" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_gotomainmenu"]
 [connection signal="RESUMEGAME" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_resumegame"]

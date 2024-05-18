@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dlmr5vl3ghvlj"]
+[gd_scene load_steps=2 format=3 uid="uid://dlmr5vl3ghvlj"]
+
+[ext_resource type="Theme" uid="uid://c18an0636huu3" path="res://theme.tres" id="1_htc5r"]
 
 [node name="hud" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_htc5r")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_direction = 2
@@ -18,9 +21,17 @@ grow_horizontal = 2
 alignment = 1
 
 [node name="ProgressBar2" type="ProgressBar" parent="HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
