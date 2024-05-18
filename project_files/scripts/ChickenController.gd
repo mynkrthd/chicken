@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 @export var SPEED = 500.0;
 @export var DASH_SPEED = 1000;
+@export var CURRENT_HEALTH = 100;
+@export var MAX_HEALTH = 100;
 @export_range(0.0, 1.5) var SKEW_AMOUNT = 0.0;
 
 @onready var dash_timer = $CharacterAnchor/DashTimer
@@ -19,7 +21,7 @@ func get_input():
 	#Movement input
 	#Calculating the unit vector of the direction into which to move and multipling it with speed
 	var input_direction = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");
-	#TODO: Implement Dash and Shooting
+	
 	#Checking if dash key is pressed
 	if Input.is_action_pressed("Dash") && !dashing && can_dash:
 		dashing = true;
