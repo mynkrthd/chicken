@@ -37,7 +37,7 @@ func get_input():
 			character_anchor.scale.x *= -1;
 	
 	#Adding skew to the chicken sprite when moving
-	chicken_sprite.skew = SKEW_AMOUNT * input_direction.length();
+	chicken_sprite.skew = SKEW_AMOUNT * velocity.normalized().length();
 	
 	#Aiming
 	#Calculating normalized mouse and forward vector to calculate dot product
