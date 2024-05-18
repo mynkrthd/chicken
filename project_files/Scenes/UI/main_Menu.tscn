@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbq4e7vqbsx5g"]
+[gd_scene load_steps=3 format=3 uid="uid://dbq4e7vqbsx5g"]
 
 [ext_resource type="Theme" uid="uid://c18an0636huu3" path="res://theme.tres" id="1_fi0kh"]
+[ext_resource type="Script" path="res://Scenes/UI/main_Menu.gd" id="2_25fps"]
 
 [node name="mainMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +13,10 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_fi0kh")
+script = ExtResource("2_25fps")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="titleLbl" type="Label" parent="."]
 layout_mode = 2
@@ -41,3 +46,9 @@ offset_top = 214.0
 offset_right = 632.0
 offset_bottom = 257.0
 text = "Quit"
+
+[connection signal="STARTGAME" from="." to="." method="_on_startgame"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="startBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="toggled" from="startBtn" to="." method="_on_start_btn_toggled"]
+[connection signal="pressed" from="quitBtn" to="." method="_on_quit_btn_pressed"]
