@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5u3h5xw7hq7q"]
+
+[ext_resource type="Script" path="res://scripts/gun.gd" id="1_3b7jk"]
+[ext_resource type="PackedScene" uid="uid://rn7a6d6bef3m" path="res://presets/Guns/ak47/ak_47_bullets.tscn" id="2_s8uo0"]
+[ext_resource type="Texture2D" uid="uid://b31v0wnljb656" path="res://sprites/placeholde_gun.png" id="3_ipdob"]
+
+[node name="AK47" type="Node2D"]
+script = ExtResource("1_3b7jk")
+Bullet = ExtResource("2_s8uo0")
+
+[node name="Gun2" type="Sprite2D" parent="."]
+position = Vector2(53, 26)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("3_ipdob")
+
+[node name="Muzzle" type="Marker2D" parent="Gun2"]
+position = Vector2(178.571, -33.3333)
+gizmo_extents = 50.0
+
+[node name="FireRateTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
