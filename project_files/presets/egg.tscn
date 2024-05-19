@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7e4aqew3noqj"]
+
+[ext_resource type="Script" path="res://scripts/egg.gd" id="1_k1eye"]
+[ext_resource type="Texture2D" uid="uid://hyw3i42xxblj" path="res://sprites/eggStates.webp" id="1_lv5ll"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i78qs"]
+radius = 6.0
+height = 16.0
+
+[node name="Egg" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_k1eye")
+
+[node name="DestroyedEggLifetime" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="EggHealthy" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+texture = ExtResource("1_lv5ll")
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 16, 16)
+
+[node name="EggHit" type="Sprite2D" parent="Sprites"]
+visible = false
+texture_filter = 1
+texture = ExtResource("1_lv5ll")
+region_enabled = true
+region_rect = Rect2(16, 2.08165e-12, 16, 16)
+
+[node name="EggDestroyed1" type="Sprite2D" parent="Sprites"]
+visible = false
+texture_filter = 1
+texture = ExtResource("1_lv5ll")
+region_enabled = true
+region_rect = Rect2(32, 2.08165e-12, 16, 16)
+
+[node name="EggDestroyed2" type="Sprite2D" parent="Sprites"]
+visible = false
+texture_filter = 1
+texture = ExtResource("1_lv5ll")
+region_enabled = true
+region_rect = Rect2(48, 2.08165e-12, 16, 16)
+
+[node name="EggDestroyedAnimTimer" type="Timer" parent="Sprites"]
+wait_time = 0.1
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_i78qs")
+
+[connection signal="timeout" from="DestroyedEggLifetime" to="." method="_on_destroyed_egg_lifetime_timeout"]
+[connection signal="timeout" from="Sprites/EggDestroyedAnimTimer" to="." method="_on_egg_destroyed_anim_timer_timeout"]

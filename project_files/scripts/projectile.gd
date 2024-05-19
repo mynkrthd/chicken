@@ -5,7 +5,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass;
 
 func _physics_process(delta):
 	position += transform.x * speed * delta;
@@ -20,6 +20,14 @@ func _on_bullet_lifetime_timeout():
 
 
 func _on_body_entered(body):
-	#TODO: Implement when player or AI collides with it, reduce thier health by damage amount
 	#TODO: Emit signal when hit?
+	var transf = global_transform;
+	if body.name == "baseTile" || body.name == "midTile" || body.name == "detailTile":
+		pass;
+	elif body.collision_layer == 2 || body.collision_layer == 3 || body.collision_layer == 4:
+		body.take_damage(damage);
+	#TODO: Implement Bullet implact
+	#var bullet_impact = load("res://presets/bullet_impact.tscn").instantiate();
+	#owner.add_child(bullet_impact);
+	#bullet_impact.global_transform = transf;
 	queue_free();

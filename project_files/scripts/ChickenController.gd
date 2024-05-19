@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 @export var SPEED = 500.0;
 @export var DASH_SPEED = 1000;
-@export var CURRENT_HEALTH = 100;
 @export var MAX_HEALTH = 100;
 @export_range(0.0, 1.5) var SKEW_AMOUNT = 0.0;
 
@@ -14,8 +13,18 @@ extends CharacterBody2D
 @onready var gun_anchor  = $CharacterAnchor/GunAnchor
 @onready var front_vector = $CharacterAnchor/frontVector
 
+var CURRENT_HEALTH = 100;
 var dashing = false;
 var can_dash = true;
+var dead = false;
+
+func take_damage(damage):
+	CURRENT_HEALTH -= damage;
+	if CURRENT_HEALTH < 0:
+		CURRENT_HEALTH = 0;
+
+func _ready():
+	CURRENT_HEALTH = MAX_HEALTH;
 
 func get_input():
 	#Movement input
