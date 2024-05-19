@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://rn7a6d6bef3m"]
+[gd_scene load_steps=5 format=3 uid="uid://rn7a6d6bef3m"]
 
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_lskyg"]
 [ext_resource type="Texture2D" uid="uid://b1cv7gr84pevp" path="res://sprites/arrow.png" id="2_5h7qa"]
+[ext_resource type="AudioStream" uid="uid://diq4us5dl0eu4" path="res://Audio/Shoot.wav" id="3_iltrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbbw6"]
 size = Vector2(125, 40)
@@ -22,6 +23,10 @@ texture = ExtResource("2_5h7qa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_cbbw6")
+
+[node name="BulletSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_iltrk")
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="BulletLifetime" to="." method="_on_bullet_lifetime_timeout"]

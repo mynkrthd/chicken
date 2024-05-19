@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqflje2qxnwrj"]
+[gd_scene load_steps=13 format=3 uid="uid://dqflje2qxnwrj"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_smf8d"]
 [ext_resource type="PackedScene" uid="uid://dlmr5vl3ghvlj" path="res://Scenes/UI/hud.tscn" id="2_x50cj"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cav8gkhohwn8w" path="res://Scenes/UI/pause_menu.tscn" id="5_o1636"]
 [ext_resource type="PackedScene" uid="uid://beysilb8k5oaq" path="res://Scenes/UI/level_village.tscn" id="7_shfhw"]
 [ext_resource type="Texture2D" uid="uid://b3d8vkr8okjho" path="res://sprites/icon.svg" id="8_cnswr"]
+[ext_resource type="AudioStream" uid="uid://dba7t3x4y6mga" path="res://Audio/BGM.wav" id="9_eft0x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ax5xm"]
 atlas = ExtResource("8_cnswr")
@@ -67,6 +68,10 @@ sprite_frames = SubResource("SpriteFrames_qm2kt")
 position = Vector2(542, 320)
 scale = Vector2(5.83, 5.83)
 shape = SubResource("CircleShape2D_03xhs")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_eft0x")
+autoplay = true
 
 [connection signal="QUITGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_quitgame"]
 [connection signal="STARTGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_startgame"]

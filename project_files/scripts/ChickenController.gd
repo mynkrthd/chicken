@@ -61,8 +61,6 @@ func get_input():
 				gun_anchor.scale.y *= -1;
 	
 	gun_anchor.look_at(get_global_mouse_position());
-	print("Character Anchor Scale: ", character_anchor.scale);
-	print("Dot Product: ", mouse_pos_vector.dot(forward_vector), " ; Gun Ancor Scale: ", gun_anchor.scale);
 	
 	if dashing:
 		velocity = input_direction * DASH_SPEED;
