@@ -1,8 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dncvt2m2tm6hu"]
+[gd_scene load_steps=7 format=3 uid="uid://dncvt2m2tm6hu"]
 
-[ext_resource type="Texture2D" uid="uid://c6ke0ayqk0wt7" path="res://sprites/chicken/placeholder_chicken.png" id="1_mr30o"]
+[ext_resource type="Texture2D" uid="uid://c6ke0ayqk0wt7" path="res://sprites/chicken/chicken.png" id="1_mr30o"]
 [ext_resource type="Script" path="res://scripts/ChickenController.gd" id="1_mrsyq"]
 [ext_resource type="PackedScene" uid="uid://b5u3h5xw7hq7q" path="res://presets/Guns/ak47/ak_47.tscn" id="3_0ubii"]
+
+[sub_resource type="Gradient" id="Gradient_2dqsp"]
+offsets = PackedFloat32Array(0, 0.441558)
+colors = PackedColorArray(1, 1, 0.494118, 0.792157, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1p8b8"]
+gradient = SubResource("Gradient_2dqsp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btpga"]
 radius = 12.0
@@ -12,6 +21,11 @@ height = 32.0
 script = ExtResource("1_mrsyq")
 SPEED = 300.0
 SKEW_AMOUNT = 0.2
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(1.1875, 1.1875)
+texture = SubResource("GradientTexture2D_1p8b8")
 
 [node name="CharacterAnchor" type="Node2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -25,7 +39,8 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Chicken" type="Sprite2D" parent="CharacterAnchor"]
-scale = Vector2(0.34, 0.34)
+position = Vector2(-3.8147e-06, -30)
+scale = Vector2(0.144206, 0.144206)
 texture = ExtResource("1_mr30o")
 offset = Vector2(2.08165e-12, -130)
 flip_h = true

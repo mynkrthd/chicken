@@ -7,11 +7,20 @@ extends Node2D
 @onready var hud = $CanvasLayer/hud
 @onready var game_over = $CanvasLayer/GameOver
 
+var paused
+
+func _ready():
+	showMainMenu()
+	paused=false
+	
 func gamePuase():
+	
 	pause_menu.show()
 	
 func gameResume():
+	
 	pause_menu.hide()
+	
 func showMainMenu():
 	main_menu.show()
 	pause_menu.hide()
@@ -19,12 +28,15 @@ func showMainMenu():
 	hud.hide()
 	player_chicken.hide()
 		
-func _ready():
-	showMainMenu()
+
 	
 func _input(event):
 	if(event.is_action_pressed("pause_game")):
-		gamePuase()
+		paused=!paused
+		if(paused):
+			gamePuase()
+		else:
+			gameResume()
 		
 func _on_main_menu_startgame():
 	player_chicken.show()

@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var can_dash_timer = $CharacterAnchor/CanDashTimer
 @onready var character_anchor = $CharacterAnchor
 @onready var chicken_sprite = $CharacterAnchor/Chicken
-@onready var gun_anchor = $CharacterAnchor/GunAnchor
+@onready var gun_anchor  = $CharacterAnchor/GunAnchor
 @onready var front_vector = $CharacterAnchor/frontVector
 
 var dashing = false;

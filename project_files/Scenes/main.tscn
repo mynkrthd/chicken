@@ -75,4 +75,3 @@ autoplay = true
 
 [connection signal="QUITGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_quitgame"]
 [connection signal="STARTGAME" from="CanvasLayer/mainMenu" to="." method="_on_main_menu_startgame"]
-[connection signal="RESUMEGAME" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_resumegame"]
