@@ -12,6 +12,7 @@
 script = ExtResource("1_smf8d")
 
 [node name="LevelVillage" parent="." instance=ExtResource("7_shfhw")]
+position = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="PlayerChicken" parent="." instance=ExtResource("4_qg6wp")]
 position = Vector2(411, 300)
