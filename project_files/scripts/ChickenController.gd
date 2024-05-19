@@ -23,7 +23,7 @@ func get_input():
 	var input_direction = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");
 	
 	#Checking if dash key is pressed
-	if Input.is_action_pressed("Dash") && !dashing && can_dash:
+	if Input.is_action_just_pressed("Dash") && !dashing && can_dash:
 		dashing = true;
 		can_dash = false;
 		can_dash_timer.start();
@@ -37,7 +37,7 @@ func get_input():
 			character_anchor.scale.x *= -1;
 	
 	#Adding skew to the chicken sprite when moving
-	chicken_sprite.skew = SKEW_AMOUNT * input_direction.length();
+	chicken_sprite.skew = SKEW_AMOUNT * velocity.normalized().length();
 	
 	#Aiming
 	#Calculating normalized mouse and forward vector to calculate dot product
